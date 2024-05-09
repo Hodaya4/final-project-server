@@ -1,8 +1,6 @@
 package com.ashcollege;
 
 
-import com.ashcollege.entities.Client;
-import com.ashcollege.entities.Note;
 import com.ashcollege.entities.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -46,14 +44,6 @@ public class Persist {
         return this.sessionFactory.getCurrentSession().createQuery("FROM User").list();
     }
 
-    public Client getClientByFirstName(String firstName) {
-        return (Client) this.sessionFactory.getCurrentSession().createQuery(
-                        "FROM Client WHERE firstName = :firstName")
-                .setParameter("firstName", firstName)
-                .setMaxResults(1)
-                .uniqueResult();
-    }
-
     public User login(String username, String password) {
         return (User) this.sessionFactory.getCurrentSession().createQuery(
                         "FROM User WHERE username = :username AND password = :password")
@@ -63,17 +53,4 @@ public class Persist {
                 .uniqueResult();
     }
 
-    public List<Note> getNotes(String secret) {
-        return this.sessionFactory.getCurrentSession().createQuery(
-                        "FROM Note WHERE owner.secret = :secret")
-                .setParameter("secret", secret)
-                .list();
-    }
-
-    public List<Note> getNotesByCollegeName (String collegeName) {
-        return this.sessionFactory.getCurrentSession().createQuery(
-                        "FROM Note WHERE owner.college.name = :collegeName")
-                .setParameter("collegeName", collegeName)
-                .list();
-    }
 }

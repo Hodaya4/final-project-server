@@ -1,10 +1,6 @@
 package com.ashcollege.utils;
-
-
-import com.ashcollege.entities.Product;
 import com.ashcollege.entities.User;
 import org.springframework.stereotype.Component;
-
 import javax.annotation.PostConstruct;
 import java.sql.*;
 import java.util.ArrayList;
@@ -71,27 +67,14 @@ public class DbUtils {
                 int id = resultSet.getInt("id");
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
-                User user = new User(id, username,password);
+                String email = resultSet.getString("email");
+                User user = new User(username,password,email);
                 allUsers.add(user);
             }
-
         }catch (Exception e) {
             e.printStackTrace();
         }
         return allUsers;
-    }
-
-    public void addProduct(Product product) {
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO product (description, price, count) VALUES ( ? , ? , ?)");
-            preparedStatement.setString(1, product.getDescription());
-            preparedStatement.setFloat(2, product.getPrice());
-            preparedStatement.setInt(3, product.getCount());
-            preparedStatement.executeUpdate();
-
-        }catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     /*public boolean checkCredentials (String username, String password) {
@@ -107,16 +90,14 @@ public class DbUtils {
         User user = null;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT id, secret FROM users WHERE username = ? AND password = ? ");
+                    "SELECT id, FROM users WHERE username = ? AND password = ? ");
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 int id = resultSet.getInt("id");
-                String secret = resultSet.getString("secret");
                 user = new User();
                 user.setId(id);
-                user.setSecret(secret);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -124,50 +105,5 @@ public class DbUtils {
         return user;
 
     }
-
-    public List<Product> getProductsByUserSecret (String secret) {
-        List<Product> products = new ArrayList<>();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT p.description,p.price " +
-                            "FROM users u INNER JOIN users_products_map upm ON u.id = upm.user_id " +
-                            "INNER JOIN products p ON upm.product_id = p.id " +
-                            "WHERE u.secret = ?"
-            );
-            preparedStatement.setString(1,secret);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                String name = resultSet.getString("description");
-                float price = resultSet.getFloat("price");
-                Product product = new Product(name,price);
-                products.add(product);
-            }
-        }catch (Exception e) {
-            System.out.println(e);
-        }
-        return products;
-    }
-
-    public User getUserBySecret (String secret) {
-        User user = null;
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT * " +
-                            "FROM users u " +
-                            "WHERE u.secret = ?"
-            );
-            preparedStatement.setString(1,secret);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                user = new User();
-                user.setId(id);
-            }
-        }catch (Exception e) {
-            System.out.println(e);
-        }
-        return user;
-    }
-
 
 }

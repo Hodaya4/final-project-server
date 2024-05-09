@@ -86,24 +86,24 @@ public class DbUtils {
         }
     }*/
 
-    public User login (String username, String password) {
-        User user = null;
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT id, FROM users WHERE username = ? AND password = ? ");
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                user = new User();
-                user.setId(id);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return user;
-
-    }
+//    public User login (String username, String password) {
+//        User user = null;
+//        try {
+//            PreparedStatement preparedStatement = connection.prepareStatement(
+//                    "SELECT id, FROM users WHERE username = ? AND password = ? ");
+//            preparedStatement.setString(1, username);
+//            preparedStatement.setString(2, password);
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//            if (resultSet.next()) {
+//                int id = resultSet.getInt("id");
+//                user = new User();
+//                user.setId(id);
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return user;
+//
+//    }
 
 }

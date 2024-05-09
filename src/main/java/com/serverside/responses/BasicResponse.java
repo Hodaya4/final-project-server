@@ -1,4 +1,4 @@
-package com.ashcollege.responses;
+package com.serverside.responses;
 
 public class BasicResponse {
     private boolean success;

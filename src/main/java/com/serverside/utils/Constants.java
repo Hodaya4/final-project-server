@@ -1,4 +1,4 @@
-package com.ashcollege.utils;
+package com.serverside.utils;
 
 
 public class Constants {

@@ -1,7 +1,7 @@
-package com.ashcollege;
+package com.serverside;
 
 
-import com.ashcollege.entities.User;
+import com.serverside.entities.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

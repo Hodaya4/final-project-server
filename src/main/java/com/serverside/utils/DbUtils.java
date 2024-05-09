@@ -1,5 +1,5 @@
-package com.ashcollege.utils;
-import com.ashcollege.entities.User;
+package com.serverside.utils;
+import com.serverside.entities.User;
 import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.sql.*;
@@ -19,7 +19,7 @@ public class DbUtils {
     private void createDbConnection(String username, String password){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ash2024", username, password);
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookhaven", username, password);
             System.out.println("Connection successful!");
             System.out.println();
         }catch (Exception e){

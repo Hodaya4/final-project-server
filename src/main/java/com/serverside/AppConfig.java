@@ -1,4 +1,4 @@
-package com.ashcollege;
+package com.serverside;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.context.annotation.Bean;
@@ -12,8 +12,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import javax.sql.DataSource;
 import java.util.Properties;
 
-import static com.ashcollege.utils.Constants.DB_PASSWORD;
-import static com.ashcollege.utils.Constants.DB_USERNAME;
+import static com.serverside.utils.Constants.DB_PASSWORD;
+import static com.serverside.utils.Constants.DB_USERNAME;
 
 
 @Configuration
@@ -25,7 +25,7 @@ public class AppConfig {
     public DataSource dataSource() throws Exception {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setDriverClass("com.mysql.jdbc.Driver");
-        dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/ash2024?useSSL=false&allowPublicKeyRetrieval=true");
+        dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/bookhaven?useSSL=false&allowPublicKeyRetrieval=true");
         dataSource.setUser(DB_USERNAME);
         dataSource.setPassword(DB_PASSWORD);
         dataSource.setMaxPoolSize(20);

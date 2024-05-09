@@ -1,7 +1,4 @@
-package com.ashcollege.entities;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.serverside.entities;
 
 public class User {
     private String username;

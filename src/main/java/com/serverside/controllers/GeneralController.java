@@ -1,9 +1,9 @@
-package com.ashcollege.controllers;
-import com.ashcollege.Persist;
-import com.ashcollege.entities.*;
-import com.ashcollege.responses.BasicResponse;
-import com.ashcollege.responses.LoginResponse;
-import com.ashcollege.utils.DbUtils;
+package com.serverside.controllers;
+import com.serverside.Persist;
+import com.serverside.entities.*;
+import com.serverside.responses.BasicResponse;
+import com.serverside.responses.LoginResponse;
+import com.serverside.utils.DbUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import javax.annotation.PostConstruct;
-import java.io.IOException;
 import java.util.*;
 import java.util.List;
-import static com.ashcollege.utils.Errors.*;
+import static com.serverside.utils.Errors.*;
 
 
 

@@ -1,4 +1,4 @@
-package com.ashcollege.responses;
+package com.serverside.responses;
 
 public class LoginResponse extends BasicResponse {
     private int id;

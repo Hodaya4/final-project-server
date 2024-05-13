@@ -2,12 +2,10 @@ package com.serverside.responses;
 
 public class LoginResponse extends BasicResponse {
     private int id;
-    private String secret;
 
-    public LoginResponse(boolean success, Integer errorCode, int id, String secret) {
+    public LoginResponse(boolean success, Integer errorCode, int id) {
         super(success, errorCode);
         this.id = id;
-        this.secret = secret;
     }
 
     public LoginResponse(boolean success, Integer errorCode) {
@@ -22,11 +20,4 @@ public class LoginResponse extends BasicResponse {
         this.id = id;
     }
 
-    public String getSecret() {
-        return secret;
-    }
-
-    public void setSecret(String secret) {
-        this.secret = secret;
-    }
 }

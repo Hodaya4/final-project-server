@@ -1,9 +1,18 @@
 package com.serverside.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
+    private int id;
     private String username;
     private String password;
     private String email;
+
+    public User(int id, String username, String password, String email) {
+        this(username, password, email);
+        this.id = id;
+    }
 
     public User(String username, String password, String email) {
         this.username = username;
@@ -14,7 +23,6 @@ public class User {
     public User() {
 
     }
-
 
     public String getUsername() {
         return username;
@@ -36,8 +44,12 @@ public class User {
         return this.username.equals(username);
     }
 
-    public boolean isSameCreds (String username, String password) {
-        return this.username.equals(username) && this.password.equals(password);
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {

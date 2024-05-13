@@ -44,10 +44,10 @@ public class Persist {
         return this.sessionFactory.getCurrentSession().createQuery("FROM User").list();
     }
 
-    public User login(String username, String password) {
+    public User login(String email, String password) {
         return (User) this.sessionFactory.getCurrentSession().createQuery(
-                        "FROM User WHERE username = :username AND password = :password")
-                .setParameter("username", username)
+                        "FROM User WHERE email = :email AND password = :password")
+                .setParameter("email", email)
                 .setParameter("password", password)
                 .setMaxResults(1)
                 .uniqueResult();
